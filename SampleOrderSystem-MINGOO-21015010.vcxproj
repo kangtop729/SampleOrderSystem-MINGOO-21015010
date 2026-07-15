@@ -146,6 +146,7 @@
     <ClCompile Include="src\Repository\RepositoryException.cpp" />
     <ClCompile Include="src\Repository\JsonSampleRepository.cpp" />
     <ClCompile Include="src\Repository\JsonOrderRepository.cpp" />
+    <ClCompile Include="src\Service\SampleService.cpp" />
     <ClCompile Include="src\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -178,6 +179,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="test\SampleServiceTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Model\OrderStatus.h" />
@@ -192,6 +197,8 @@
     <ClInclude Include="src\Repository\JsonSampleRepository.h" />
     <ClInclude Include="src\Repository\JsonOrderRepository.h" />
     <ClInclude Include="src\ThirdParty\nlohmann\json.hpp" />
+    <ClInclude Include="src\Service\SampleService.h" />
+    <ClInclude Include="test\mocks\MockSampleRepository.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
