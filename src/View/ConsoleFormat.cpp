@@ -163,5 +163,9 @@ std::string FormatStockStatusKoreanLabel(Service::StockStatus status) {
     return StockStatusToKoreanLabel(status);
 }
 
+std::string FormatErrorMessage(const std::string& message) {
+    return "[오류] " + message + "\n";
+}
+
 }  // namespace ConsoleFormat
 }  // namespace View

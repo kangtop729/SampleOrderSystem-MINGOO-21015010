@@ -18,6 +18,7 @@ std::string FormatThousands(long long value);
 std::string FormatOrderStatusBadge(Model::OrderStatus status);
 std::string FormatStockStatusBadge(Service::StockStatus status);
 std::string FormatStockStatusKoreanLabel(Service::StockStatus status);
+std::string FormatErrorMessage(const std::string& message);
 
 }  // namespace ConsoleFormat
 }  // namespace View
