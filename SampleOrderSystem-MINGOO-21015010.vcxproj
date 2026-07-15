@@ -141,6 +141,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="CLAUDE.md" />
+    <None Include="PRD.md" />
     <None Include="README.md" />
     <None Include=".claude\agents\orchestrator.md" />
     <None Include=".claude\agents\domain-modeler.md" />

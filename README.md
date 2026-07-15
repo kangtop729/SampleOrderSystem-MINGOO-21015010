@@ -61,6 +61,7 @@ SampleOrderSystem-MINGOO-21015010/
 ├── test/              # gmock 기반 단위 테스트
 ├── docs_implement/     # Phase별 구현 계획 문서 (전체/PoC 4종/본 프로젝트)
 ├── CLAUDE.md           # 에이전트 작업 규칙
+├── PRD.md              # 요구사항 명세
 └── README.md
 ```
 
