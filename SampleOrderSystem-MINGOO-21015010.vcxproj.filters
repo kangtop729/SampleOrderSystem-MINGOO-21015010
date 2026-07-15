@@ -96,6 +96,9 @@
     <ClCompile Include="test\MonitoringServiceTest.cpp">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="test\ConsoleFormatTest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
     <ClCompile Include="test\ReleaseServiceTest.cpp">
       <Filter>test</Filter>
     </ClCompile>
