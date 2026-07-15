@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include=".claude">
+      <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include=".claude\agents">
+      <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d0a}</UniqueIdentifier>
+    </Filter>
     <Filter Include="docs_implement">
       <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d01}</UniqueIdentifier>
     </Filter>
@@ -39,6 +45,21 @@
     <None Include="packages.config" />
     <None Include="CLAUDE.md" />
     <None Include="README.md" />
+    <None Include=".claude\agents\orchestrator.md">
+      <Filter>.claude\agents</Filter>
+    </None>
+    <None Include=".claude\agents\domain-modeler.md">
+      <Filter>.claude\agents</Filter>
+    </None>
+    <None Include=".claude\agents\persistence-engineer.md">
+      <Filter>.claude\agents</Filter>
+    </None>
+    <None Include=".claude\agents\tdd-test-engineer.md">
+      <Filter>.claude\agents</Filter>
+    </None>
+    <None Include=".claude\agents\clean-code-reviewer.md">
+      <Filter>.claude\agents</Filter>
+    </None>
     <None Include="docs_implement\Overall\PLAN.md">
       <Filter>docs_implement\Overall</Filter>
     </None>
