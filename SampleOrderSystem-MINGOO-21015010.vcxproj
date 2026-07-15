@@ -140,6 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="docs_implement\Overall\PLAN.md" />
+    <None Include="docs_implement\ConsoleMVC-MINGOO-21015010\PLAN.md" />
+    <None Include="docs_implement\DataPersistence-MINGOO-21015010\PLAN.md" />
+    <None Include="docs_implement\DataMonitor-MINGOO-21015010\PLAN.md" />
+    <None Include="docs_implement\DummyDataGenerator-MINGOO-21015010\PLAN.md" />
+    <None Include="docs_implement\SampleOrderSystem-MINGOO-21015010\PLAN.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -13,5 +13,47 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="docs_implement">
+      <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="docs_implement\Overall">
+      <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="docs_implement\ConsoleMVC-MINGOO-21015010">
+      <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="docs_implement\DataPersistence-MINGOO-21015010">
+      <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="docs_implement\DataMonitor-MINGOO-21015010">
+      <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="docs_implement\DummyDataGenerator-MINGOO-21015010">
+      <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="docs_implement\SampleOrderSystem-MINGOO-21015010">
+      <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d07}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="docs_implement\Overall\PLAN.md">
+      <Filter>docs_implement\Overall</Filter>
+    </None>
+    <None Include="docs_implement\ConsoleMVC-MINGOO-21015010\PLAN.md">
+      <Filter>docs_implement\ConsoleMVC-MINGOO-21015010</Filter>
+    </None>
+    <None Include="docs_implement\DataPersistence-MINGOO-21015010\PLAN.md">
+      <Filter>docs_implement\DataPersistence-MINGOO-21015010</Filter>
+    </None>
+    <None Include="docs_implement\DataMonitor-MINGOO-21015010\PLAN.md">
+      <Filter>docs_implement\DataMonitor-MINGOO-21015010</Filter>
+    </None>
+    <None Include="docs_implement\DummyDataGenerator-MINGOO-21015010\PLAN.md">
+      <Filter>docs_implement\DummyDataGenerator-MINGOO-21015010</Filter>
+    </None>
+    <None Include="docs_implement\SampleOrderSystem-MINGOO-21015010\PLAN.md">
+      <Filter>docs_implement\SampleOrderSystem-MINGOO-21015010</Filter>
+    </None>
   </ItemGroup>
 </Project>
