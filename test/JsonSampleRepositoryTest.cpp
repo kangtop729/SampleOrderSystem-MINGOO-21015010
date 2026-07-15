@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <filesystem>
+#include <functional>
 #include <fstream>
 #include <optional>
 #include <string>
@@ -31,7 +32,11 @@ Sample MakeSample(const std::string& sampleId = "SMP-001", const std::string& na
 class JsonSampleRepositoryTest : public ::testing::Test {
 protected:
     void SetUp() override {
-        const std::string testName = ::testing::UnitTest::GetInstance()->current_test_info()->name();
+        const std::string rawTestName = ::testing::UnitTest::GetInstance()->current_test_info()->name();
+        // 테스트 이름에 한글이 포함되어 있으면 std::filesystem::path 생성 시 Windows ANSI 코드
+        // 페이지 변환에서 예외가 발생할 수 있어(특히 /utf-8 컴파일 옵션 적용 후), ASCII 안전한
+        // 해시값으로 대체해 파일명을 만든다.
+        const std::string testName = std::to_string(std::hash<std::string>{}(rawTestName));
         filePath_ = std::filesystem::temp_directory_path() / ("sample_repo_test_" + testName + ".json");
         std::filesystem::remove(filePath_);
     }
