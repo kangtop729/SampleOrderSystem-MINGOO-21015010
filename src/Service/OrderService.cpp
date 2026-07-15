@@ -56,7 +56,7 @@ Model::Order OrderService::FindOrderOrThrow(const std::string& orderNo) const {
     return order.value();
 }
 
-void OrderService::ApproveOrder(const std::string& orderNo) {
+Model::OrderStatus OrderService::ApproveOrder(const std::string& orderNo) {
     Model::Order order = FindOrderOrThrow(orderNo);
 
     auto sample = sampleRepository_.FindById(order.GetSampleId());
@@ -71,6 +71,8 @@ void OrderService::ApproveOrder(const std::string& orderNo) {
     }
 
     orderRepository_.Update(order);
+
+    return order.GetStatus();
 }
 
 void OrderService::RejectOrder(const std::string& orderNo) {

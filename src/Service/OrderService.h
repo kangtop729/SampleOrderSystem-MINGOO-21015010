@@ -47,8 +47,8 @@ public:
     Model::Order PlaceOrder(const std::string& sampleId, const std::string& customerName, int quantity);
 
     // orderNo의 주문을 승인한다. 재고가 주문 수량 이상이면 CONFIRMED로, 부족하면 PRODUCING으로 전환한다.
-    // orderNo가 존재하지 않으면 OrderNotFoundException을 던진다.
-    void ApproveOrder(const std::string& orderNo);
+    // orderNo가 존재하지 않으면 OrderNotFoundException을 던진다. 전이 후의 OrderStatus를 반환한다.
+    Model::OrderStatus ApproveOrder(const std::string& orderNo);
 
     // orderNo의 주문을 거절(REJECTED)한다. orderNo가 존재하지 않으면 OrderNotFoundException을 던진다.
     void RejectOrder(const std::string& orderNo);
