@@ -15,19 +15,30 @@ const char* const kIso8601Format = "%Y-%m-%dT%H:%M:%SZ";
 }  // namespace
 
 nlohmann::json OrderSerialization::ToJson(const Order& order) {
+    nlohmann::json productionStartedAt = nullptr;
+    if (order.productionStartedAt_.has_value()) {
+        productionStartedAt = CreatedAtToIso8601(*order.productionStartedAt_);
+    }
+
     return nlohmann::json{{"orderNo", order.orderNo_},
                            {"sampleId", order.sampleId_},
                            {"customerName", order.customerName_},
                            {"quantity", order.quantity_},
                            {"status", StatusToString(order.status_)},
-                           {"createdAt", CreatedAtToIso8601(order.createdAt_)}};
+                           {"createdAt", CreatedAtToIso8601(order.createdAt_)},
+                           {"productionStartedAt", productionStartedAt}};
 }
 
 Order OrderSerialization::FromJson(const nlohmann::json& json) {
+    std::optional<std::chrono::system_clock::time_point> productionStartedAt = std::nullopt;
+    if (json.contains("productionStartedAt") && !json["productionStartedAt"].is_null()) {
+        productionStartedAt = CreatedAtFromIso8601(json["productionStartedAt"].get<std::string>());
+    }
+
     return Order(json.at("orderNo").get<std::string>(), json.at("sampleId").get<std::string>(),
                  json.at("customerName").get<std::string>(), json.at("quantity").get<int>(),
                  StatusFromString(json.at("status").get<std::string>()),
-                 CreatedAtFromIso8601(json.at("createdAt").get<std::string>()));
+                 CreatedAtFromIso8601(json.at("createdAt").get<std::string>()), productionStartedAt);
 }
 
 std::string OrderSerialization::StatusToString(OrderStatus status) {

@@ -16,13 +16,15 @@ Order::Order(std::string orderNo, std::string sampleId, std::string customerName
       createdAt_(std::chrono::system_clock::now()) {}
 
 Order::Order(std::string orderNo, std::string sampleId, std::string customerName, int quantity, OrderStatus status,
-             std::chrono::system_clock::time_point createdAt)
+             std::chrono::system_clock::time_point createdAt,
+             std::optional<std::chrono::system_clock::time_point> productionStartedAt)
     : orderNo_(std::move(orderNo)),
       sampleId_(std::move(sampleId)),
       customerName_(std::move(customerName)),
       quantity_(quantity),
       status_(status),
-      createdAt_(createdAt) {}
+      createdAt_(createdAt),
+      productionStartedAt_(productionStartedAt) {}
 
 const std::string& Order::GetOrderNo() const {
     return orderNo_;
@@ -46,6 +48,10 @@ OrderStatus Order::GetStatus() const {
 
 std::chrono::system_clock::time_point Order::GetCreatedAt() const {
     return createdAt_;
+}
+
+std::optional<std::chrono::system_clock::time_point> Order::GetProductionStartedAt() const {
+    return productionStartedAt_;
 }
 
 void Order::TransitionTo(OrderStatus requiredCurrentStatus, OrderStatus nextStatus) {
@@ -73,6 +79,10 @@ void Order::CompleteProduction() {
 
 void Order::Release() {
     TransitionTo(OrderStatus::CONFIRMED, OrderStatus::RELEASE);
+}
+
+void Order::MarkProductionStarted(std::chrono::system_clock::time_point startedAt) {
+    productionStartedAt_ = startedAt;
 }
 
 }  // namespace Model

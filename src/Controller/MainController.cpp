@@ -39,6 +39,8 @@ MainController::MainController(std::istream& in, std::ostream& out, View::MainVi
       releaseMenuController_(releaseMenuController) {}
 
 View::SystemStatusSummary MainController::BuildSummary() const {
+    productionLineService_.AutoCompleteFinishedJobs();
+
     const auto samples = sampleService_.GetAllSamples();
     long long totalStock = 0;
     for (const auto& sample : samples) {

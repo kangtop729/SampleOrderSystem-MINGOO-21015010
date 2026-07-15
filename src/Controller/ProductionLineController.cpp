@@ -21,6 +21,8 @@ void ProductionLineController::ShowSubMenu() const {
 }
 
 void ProductionLineController::Run() {
+    productionLineService_.AutoCompleteFinishedJobs();
+
     try {
         view_.ShowCurrentJob(productionLineService_.GetCurrentJob());
     } catch (const Service::NoProductionJobException&) {

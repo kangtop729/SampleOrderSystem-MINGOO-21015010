@@ -80,7 +80,10 @@ TEST_F(ProductionLineControllerTest, Run_완료처리선택시_CompleteCurrentJo
         .WillRepeatedly(Return(std::vector<Order>{order}));
     EXPECT_CALL(sampleRepository_, FindById(std::string("SMP-001"))).WillRepeatedly(Return(sample));
     EXPECT_CALL(sampleRepository_, Update(::testing::_)).WillOnce(Return(true));
-    EXPECT_CALL(orderRepository_, Update(::testing::_)).WillOnce(Return(true));
+    // Run()이 시작될 때 AutoCompleteFinishedJobs()가 먼저 생산 시작 시각을 기록하며 1회 Update를
+    // 호출하고, 이후 "완료 처리" 메뉴 선택 시 CompleteCurrentJob()이 완료 처리로 다시 1회 Update를
+    // 호출하므로 총 2회 호출된다(단일 생산 라인 순차 처리로 변경되며 생긴 차이).
+    EXPECT_CALL(orderRepository_, Update(::testing::_)).Times(2).WillRepeatedly(Return(true));
 
     std::istringstream in("1\n0\n");
     std::ostringstream out;

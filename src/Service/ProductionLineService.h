@@ -44,6 +44,15 @@ public:
     // 않는다.
     void CompleteCurrentJob();
 
+    // 단일 생산 라인을 순차(FIFO) 처리한다. 대기열의 맨 앞 주문이 아직 생산을 시작하지 않았다면(
+    // productionStartedAt이 없다면) 지금 시각을 생산 시작 시각으로 기록하여 영속화하고 반환한다(이번
+    // 호출에서는 그 이상 진행하지 않는다). 맨 앞 주문이 이미 시작된 상태라면, 생산 시작 시각 기준 경과
+    // 시간이 총 생산 시간(분) 이상인 경우에만 완료 처리(재고 증가 + CONFIRMED 전환)하고, 그 다음 대기
+    // 주문으로 넘어가 같은 과정을 반복한다. 뒤쪽 대기 주문들은 앞 작업이 끝나기 전까지는 전혀 진행되지
+    // 않는다(진짜 순차 처리, 병렬 진행 없음).
+    // 반환값: 자동 완료된 건수(0이면 완료 대상 없음).
+    int AutoCompleteFinishedJobs();
+
 private:
     // FindById로 조회한 Sample과, 해당 주문에 대한 부족분/실 생산량 계산 결과를 함께 묶어 반환한다.
     // BuildProductionJob과 CompleteCurrentJob이 동일한 조회/계산 로직을 중복하지 않도록 공유한다.
@@ -55,7 +64,7 @@ private:
 
     std::vector<Model::Order> GetSortedProducingOrders() const;
     OrderProductionCalculation CalculateForOrder(const Model::Order& order) const;
-    Model::ProductionJob BuildProductionJob(const Model::Order& order) const;
+    Model::ProductionJob BuildProductionJob(const Model::Order& order, bool isFront) const;
 
     Repository::IOrderRepository& orderRepository_;
     Repository::ISampleRepository& sampleRepository_;

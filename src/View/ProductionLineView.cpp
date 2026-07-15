@@ -1,5 +1,8 @@
 ﻿#include "ProductionLineView.h"
 
+#include <algorithm>
+#include <chrono>
+
 #include "ConsoleFormat.h"
 
 namespace View {
@@ -16,6 +19,25 @@ void ProductionLineView::ShowCurrentJob(const Model::ProductionJob& job) const {
     out_ << "부족분          : " << job.GetShortfall() << "\n";
     out_ << "실 생산량       : " << job.GetActualProductionQty() << "\n";
     out_ << "총 생산 시간(분): " << job.GetTotalProductionMinutes() << "\n";
+
+    if (!job.GetProductionStartedAt().has_value()) {
+        out_ << "진행률          : 생산 시작 대기 중\n";
+        return;
+    }
+
+    const auto productionStartedAt = *job.GetProductionStartedAt();
+    const auto elapsed = std::chrono::system_clock::now() - productionStartedAt;
+    const double elapsedMinutes = std::chrono::duration<double, std::ratio<60>>(elapsed).count();
+    const double totalProductionMinutes = job.GetTotalProductionMinutes();
+    const double progressRatio = totalProductionMinutes <= 0.0 ? 1.0
+                                                                 : std::min(1.0, elapsedMinutes / totalProductionMinutes);
+
+    const auto estimatedCompletionTime =
+        productionStartedAt + std::chrono::duration_cast<std::chrono::system_clock::duration>(
+                                   std::chrono::duration<double, std::ratio<60>>(totalProductionMinutes));
+
+    out_ << "진행률          : " << ConsoleFormat::MakeColoredProgressBar(progressRatio) << "\n";
+    out_ << "완료 예정       : " << ConsoleFormat::FormatTimePoint(estimatedCompletionTime) << "\n";
 }
 
 void ProductionLineView::ShowNoCurrentJob() const {

@@ -3,7 +3,8 @@
 namespace Model {
 
 ProductionJob::ProductionJob(std::string orderNo, std::string sampleId, std::string customerName, int quantity,
-                              int currentStock, int shortfall, int actualProductionQty, double totalProductionMinutes)
+                              int currentStock, int shortfall, int actualProductionQty, double totalProductionMinutes,
+                              std::optional<std::chrono::system_clock::time_point> productionStartedAt)
     : orderNo_(std::move(orderNo)),
       sampleId_(std::move(sampleId)),
       customerName_(std::move(customerName)),
@@ -11,7 +12,8 @@ ProductionJob::ProductionJob(std::string orderNo, std::string sampleId, std::str
       currentStock_(currentStock),
       shortfall_(shortfall),
       actualProductionQty_(actualProductionQty),
-      totalProductionMinutes_(totalProductionMinutes) {}
+      totalProductionMinutes_(totalProductionMinutes),
+      productionStartedAt_(productionStartedAt) {}
 
 const std::string& ProductionJob::GetOrderNo() const {
     return orderNo_;
@@ -43,6 +45,10 @@ int ProductionJob::GetActualProductionQty() const {
 
 double ProductionJob::GetTotalProductionMinutes() const {
     return totalProductionMinutes_;
+}
+
+std::optional<std::chrono::system_clock::time_point> ProductionJob::GetProductionStartedAt() const {
+    return productionStartedAt_;
 }
 
 }  // namespace Model
