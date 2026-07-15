@@ -46,6 +46,46 @@
     <Filter Include="docs_implement\SampleOrderSystem-MINGOO-21015010">
       <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="test">
+      <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Model">
+      <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d0d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="test\TestMain.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\SampleTest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\OrderTest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Model\Sample.cpp">
+      <Filter>src\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Model\Order.cpp">
+      <Filter>src\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Model\OrderStatus.h">
+      <Filter>src\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model\Sample.h">
+      <Filter>src\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model\Order.h">
+      <Filter>src\Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
