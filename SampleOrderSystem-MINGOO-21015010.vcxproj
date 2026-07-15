@@ -153,6 +153,13 @@
     <ClCompile Include="src\Service\MonitoringService.cpp" />
     <ClCompile Include="src\Service\ReleaseService.cpp" />
     <ClCompile Include="src\View\ConsoleFormat.cpp" />
+    <ClCompile Include="src\View\MainView.cpp" />
+    <ClCompile Include="src\View\SampleMenuView.cpp" />
+    <ClCompile Include="src\View\OrderMenuView.cpp" />
+    <ClCompile Include="src\View\ApprovalMenuView.cpp" />
+    <ClCompile Include="src\View\MonitoringView.cpp" />
+    <ClCompile Include="src\View\ProductionLineView.cpp" />
+    <ClCompile Include="src\View\ReleaseMenuView.cpp" />
     <ClCompile Include="src\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -217,6 +224,34 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="test\MainViewTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\SampleMenuViewTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\OrderMenuViewTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\ApprovalMenuViewTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\MonitoringViewTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\ProductionLineViewTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\ReleaseMenuViewTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Model\OrderStatus.h" />
@@ -238,6 +273,13 @@
     <ClInclude Include="src\Service\MonitoringService.h" />
     <ClInclude Include="src\Service\ReleaseService.h" />
     <ClInclude Include="src\View\ConsoleFormat.h" />
+    <ClInclude Include="src\View\MainView.h" />
+    <ClInclude Include="src\View\SampleMenuView.h" />
+    <ClInclude Include="src\View\OrderMenuView.h" />
+    <ClInclude Include="src\View\ApprovalMenuView.h" />
+    <ClInclude Include="src\View\MonitoringView.h" />
+    <ClInclude Include="src\View\ProductionLineView.h" />
+    <ClInclude Include="src\View\ReleaseMenuView.h" />
     <ClInclude Include="test\mocks\MockSampleRepository.h" />
     <ClInclude Include="test\mocks\MockOrderRepository.h" />
   </ItemGroup>
