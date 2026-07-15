@@ -140,6 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="CLAUDE.md" />
+    <None Include="README.md" />
     <None Include="docs_implement\Overall\PLAN.md" />
     <None Include="docs_implement\ConsoleMVC-MINGOO-21015010\PLAN.md" />
     <None Include="docs_implement\DataPersistence-MINGOO-21015010\PLAN.md" />

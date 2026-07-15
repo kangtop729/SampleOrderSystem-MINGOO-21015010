@@ -37,6 +37,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="CLAUDE.md" />
+    <None Include="README.md" />
     <None Include="docs_implement\Overall\PLAN.md">
       <Filter>docs_implement\Overall</Filter>
     </None>
