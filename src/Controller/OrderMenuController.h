@@ -4,6 +4,7 @@
 #include <ostream>
 
 #include "../Service/OrderService.h"
+#include "../Service/SampleService.h"
 #include "../View/OrderMenuView.h"
 
 namespace Controller {
@@ -12,7 +13,7 @@ namespace Controller {
 class OrderMenuController {
 public:
     OrderMenuController(std::istream& in, std::ostream& out, View::OrderMenuView& view,
-                         Service::OrderService& orderService);
+                         Service::OrderService& orderService, Service::SampleService& sampleService);
 
     void Run();
 
@@ -21,6 +22,7 @@ private:
     std::ostream& out_;
     View::OrderMenuView& view_;
     Service::OrderService& orderService_;
+    Service::SampleService& sampleService_;
 };
 
 }  // namespace Controller

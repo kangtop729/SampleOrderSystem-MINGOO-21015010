@@ -15,6 +15,10 @@ public:
 
     void ShowOrderPlaced(const Model::Order& order) const;
     void ShowError(const std::string& message) const;
+    void ShowInputSummary(const std::string& sampleId, const std::string& sampleName,
+                          const std::string& customerName, int quantity) const;
+    void ShowConfirmPrompt() const;
+    void ShowCancelled() const;
 
 private:
     std::ostream& out_;

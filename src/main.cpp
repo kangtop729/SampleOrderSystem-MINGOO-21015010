@@ -55,8 +55,10 @@ int main() {
     View::ReleaseMenuView releaseMenuView(std::cout);
 
     Controller::SampleMenuController sampleMenuController(std::cin, std::cout, sampleMenuView, sampleService);
-    Controller::OrderMenuController orderMenuController(std::cin, std::cout, orderMenuView, orderService);
-    Controller::ApprovalMenuController approvalMenuController(std::cin, std::cout, approvalMenuView, orderService);
+    Controller::OrderMenuController orderMenuController(std::cin, std::cout, orderMenuView, orderService,
+                                                          sampleService);
+    Controller::ApprovalMenuController approvalMenuController(std::cin, std::cout, approvalMenuView, orderService,
+                                                               sampleService);
     Controller::ProductionLineController productionLineController(std::cin, std::cout, productionLineView,
                                                                      productionLineService);
     Controller::MonitoringController monitoringController(std::cin, std::cout, monitoringView, monitoringService);

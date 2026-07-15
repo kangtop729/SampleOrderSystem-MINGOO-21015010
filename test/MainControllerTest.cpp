@@ -93,8 +93,8 @@ struct MainControllerFixtureContext {
           monitoringService(orderRepository, sampleRepository),
           releaseService(orderRepository),
           sampleMenuController(in, out, sampleMenuView, sampleService),
-          orderMenuController(in, out, orderMenuView, orderService),
-          approvalMenuController(in, out, approvalMenuView, orderService),
+          orderMenuController(in, out, orderMenuView, orderService, sampleService),
+          approvalMenuController(in, out, approvalMenuView, orderService, sampleService),
           productionLineController(in, out, productionLineView, productionLineService),
           monitoringController(in, out, monitoringView, monitoringService),
           releaseMenuController(in, out, releaseMenuView, releaseService) {}
