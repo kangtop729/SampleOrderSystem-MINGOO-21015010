@@ -150,6 +150,7 @@
     <ClCompile Include="src\Service\OrderService.cpp" />
     <ClCompile Include="src\Model\ProductionJob.cpp" />
     <ClCompile Include="src\Service\ProductionLineService.cpp" />
+    <ClCompile Include="src\Service\MonitoringService.cpp" />
     <ClCompile Include="src\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -198,6 +199,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="test\StockStatusClassificationTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\MonitoringServiceTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Model\OrderStatus.h" />
@@ -216,6 +225,7 @@
     <ClInclude Include="src\Service\OrderService.h" />
     <ClInclude Include="src\Model\ProductionJob.h" />
     <ClInclude Include="src\Service\ProductionLineService.h" />
+    <ClInclude Include="src\Service\MonitoringService.h" />
     <ClInclude Include="test\mocks\MockSampleRepository.h" />
     <ClInclude Include="test\mocks\MockOrderRepository.h" />
   </ItemGroup>
