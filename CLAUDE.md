@@ -24,11 +24,24 @@
 
 ## 빌드 및 테스트 명령
 
+별도 테스트 프로젝트를 두지 않고, 4개 PoC(ConsoleMVC/DataPersistence/DataMonitor/DummyDataGenerator)와
+동일하게 **단일 `.vcxproj`에서 Configuration으로 빌드 대상을 구분**하는 컨벤션을 따른다.
+
+- **Debug 빌드**: `test/*.cpp`(gmock 테스트)를 포함해 컴파일 → 실행 파일 자체가 테스트 러너
+- **Release 빌드**: `test/*.cpp`를 `ExcludedFromBuild`로 제외 → `main.cpp` 기반 실제 콘솔 앱
+
 ```
+# 테스트 빌드 및 실행 (Debug 빌드 = 테스트 실행)
 msbuild SampleOrderSystem-MINGOO-21015010.vcxproj /p:Configuration=Debug /p:Platform=x64
+x64\Debug\SampleOrderSystem-MINGOO-21015010.exe
+
+# 실제 콘솔 앱 빌드/실행
+msbuild SampleOrderSystem-MINGOO-21015010.vcxproj /p:Configuration=Release /p:Platform=x64
+x64\Release\SampleOrderSystem-MINGOO-21015010.exe
 ```
 
-테스트 프로젝트가 구성되면 별도 테스트 실행 파일을 빌드 후 실행한다. (테스트 프로젝트 추가 시 본 절 갱신)
+새 테스트 파일을 추가할 때는 `.vcxproj`의 `test\*.cpp` `<ClCompile>` 항목에 등록하고, Release
+Configuration에서 `ExcludedFromBuild`로 처리되어 있는지 확인한다.
 
 ## 작업 원칙
 
