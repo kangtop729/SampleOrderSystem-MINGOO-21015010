@@ -20,7 +20,7 @@ void SampleMenuView::ShowRegisterSuccess(const Model::Sample& sample) const {
 }
 
 void SampleMenuView::ShowSampleTable(const std::vector<Model::Sample>& samples) const {
-    const std::vector<std::string> headers = {"시료ID", "이름", "평균생산시간(분)", "수율", "재고"};
+    const std::vector<std::string> headers = {"ID", "시료명", "평균생산시간", "수율", "현재 재고"};
     std::vector<std::vector<std::string>> rows;
     rows.reserve(samples.size());
     for (const auto& sample : samples) {

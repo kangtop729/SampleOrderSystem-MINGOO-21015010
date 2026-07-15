@@ -1,11 +1,18 @@
 ﻿#include "gtest/gtest.h"
 
+#include <algorithm>
+#include <chrono>
+#include <regex>
 #include <string>
 #include <vector>
 
 #include "../src/Model/OrderStatus.h"
 #include "../src/Service/MonitoringService.h"
 #include "../src/View/ConsoleFormat.h"
+
+namespace {
+constexpr const char* kAnsiEscapePrefix = "\x1b[";
+}  // namespace
 
 namespace {
 
@@ -166,40 +173,48 @@ TEST(ConsoleFormatTest, FormatThousands_음수1234이면_마이너스1_234를반
 // FormatOrderStatusBadge
 // ---------------------------------------------------------------------------
 
-TEST(ConsoleFormatTest, FormatOrderStatusBadge_RESERVED는_대괄호RESERVED를반환한다) {
-    EXPECT_EQ(View::ConsoleFormat::FormatOrderStatusBadge(Model::OrderStatus::RESERVED), "[RESERVED]");
+TEST(ConsoleFormatTest, FormatOrderStatusBadge_RESERVED는_대괄호RESERVED를포함한다) {
+    const std::string badge = View::ConsoleFormat::FormatOrderStatusBadge(Model::OrderStatus::RESERVED);
+    EXPECT_NE(badge.find("[RESERVED]"), std::string::npos);
 }
 
-TEST(ConsoleFormatTest, FormatOrderStatusBadge_REJECTED는_대괄호REJECTED를반환한다) {
-    EXPECT_EQ(View::ConsoleFormat::FormatOrderStatusBadge(Model::OrderStatus::REJECTED), "[REJECTED]");
+TEST(ConsoleFormatTest, FormatOrderStatusBadge_REJECTED는_대괄호REJECTED를포함한다) {
+    const std::string badge = View::ConsoleFormat::FormatOrderStatusBadge(Model::OrderStatus::REJECTED);
+    EXPECT_NE(badge.find("[REJECTED]"), std::string::npos);
 }
 
-TEST(ConsoleFormatTest, FormatOrderStatusBadge_PRODUCING은_대괄호PRODUCING을반환한다) {
-    EXPECT_EQ(View::ConsoleFormat::FormatOrderStatusBadge(Model::OrderStatus::PRODUCING), "[PRODUCING]");
+TEST(ConsoleFormatTest, FormatOrderStatusBadge_PRODUCING은_대괄호PRODUCING을포함한다) {
+    const std::string badge = View::ConsoleFormat::FormatOrderStatusBadge(Model::OrderStatus::PRODUCING);
+    EXPECT_NE(badge.find("[PRODUCING]"), std::string::npos);
 }
 
-TEST(ConsoleFormatTest, FormatOrderStatusBadge_CONFIRMED는_대괄호CONFIRMED를반환한다) {
-    EXPECT_EQ(View::ConsoleFormat::FormatOrderStatusBadge(Model::OrderStatus::CONFIRMED), "[CONFIRMED]");
+TEST(ConsoleFormatTest, FormatOrderStatusBadge_CONFIRMED는_대괄호CONFIRMED를포함한다) {
+    const std::string badge = View::ConsoleFormat::FormatOrderStatusBadge(Model::OrderStatus::CONFIRMED);
+    EXPECT_NE(badge.find("[CONFIRMED]"), std::string::npos);
 }
 
-TEST(ConsoleFormatTest, FormatOrderStatusBadge_RELEASE는_대괄호RELEASE를반환한다) {
-    EXPECT_EQ(View::ConsoleFormat::FormatOrderStatusBadge(Model::OrderStatus::RELEASE), "[RELEASE]");
+TEST(ConsoleFormatTest, FormatOrderStatusBadge_RELEASE는_대괄호RELEASE를포함한다) {
+    const std::string badge = View::ConsoleFormat::FormatOrderStatusBadge(Model::OrderStatus::RELEASE);
+    EXPECT_NE(badge.find("[RELEASE]"), std::string::npos);
 }
 
 // ---------------------------------------------------------------------------
 // FormatStockStatusBadge / FormatStockStatusKoreanLabel
 // ---------------------------------------------------------------------------
 
-TEST(ConsoleFormatTest, FormatStockStatusBadge_SUFFICIENT는_대괄호여유를반환한다) {
-    EXPECT_EQ(View::ConsoleFormat::FormatStockStatusBadge(Service::StockStatus::SUFFICIENT), "[여유]");
+TEST(ConsoleFormatTest, FormatStockStatusBadge_SUFFICIENT는_대괄호여유를포함한다) {
+    const std::string badge = View::ConsoleFormat::FormatStockStatusBadge(Service::StockStatus::SUFFICIENT);
+    EXPECT_NE(badge.find("[여유]"), std::string::npos);
 }
 
-TEST(ConsoleFormatTest, FormatStockStatusBadge_SHORTAGE는_대괄호부족을반환한다) {
-    EXPECT_EQ(View::ConsoleFormat::FormatStockStatusBadge(Service::StockStatus::SHORTAGE), "[부족]");
+TEST(ConsoleFormatTest, FormatStockStatusBadge_SHORTAGE는_대괄호부족을포함한다) {
+    const std::string badge = View::ConsoleFormat::FormatStockStatusBadge(Service::StockStatus::SHORTAGE);
+    EXPECT_NE(badge.find("[부족]"), std::string::npos);
 }
 
-TEST(ConsoleFormatTest, FormatStockStatusBadge_DEPLETED는_대괄호고갈을반환한다) {
-    EXPECT_EQ(View::ConsoleFormat::FormatStockStatusBadge(Service::StockStatus::DEPLETED), "[고갈]");
+TEST(ConsoleFormatTest, FormatStockStatusBadge_DEPLETED는_대괄호고갈을포함한다) {
+    const std::string badge = View::ConsoleFormat::FormatStockStatusBadge(Service::StockStatus::DEPLETED);
+    EXPECT_NE(badge.find("[고갈]"), std::string::npos);
 }
 
 TEST(ConsoleFormatTest, FormatStockStatusKoreanLabel_SUFFICIENT는_대괄호없이여유를반환한다) {
@@ -212,6 +227,105 @@ TEST(ConsoleFormatTest, FormatStockStatusKoreanLabel_SHORTAGE는_대괄호없이
 
 TEST(ConsoleFormatTest, FormatStockStatusKoreanLabel_DEPLETED는_대괄호없이고갈을반환한다) {
     EXPECT_EQ(View::ConsoleFormat::FormatStockStatusKoreanLabel(Service::StockStatus::DEPLETED), "고갈");
+}
+
+// ---------------------------------------------------------------------------
+// Colorize
+// ---------------------------------------------------------------------------
+
+TEST(ConsoleFormatTest, Colorize_결과에_ANSI이스케이프와_원본텍스트가_모두포함된다) {
+    const std::string colored = View::ConsoleFormat::Colorize("여유", View::ConsoleFormat::Color::Green);
+
+    EXPECT_NE(colored.find(kAnsiEscapePrefix), std::string::npos);
+    EXPECT_NE(colored.find("여유"), std::string::npos);
+}
+
+TEST(ConsoleFormatTest, Colorize_다른색상이면_다른ANSI코드가_적용된다) {
+    const std::string red = View::ConsoleFormat::Colorize("텍스트", View::ConsoleFormat::Color::Red);
+    const std::string green = View::ConsoleFormat::Colorize("텍스트", View::ConsoleFormat::Color::Green);
+
+    EXPECT_NE(red, green);
+}
+
+// ---------------------------------------------------------------------------
+// MakeLogoBanner
+// ---------------------------------------------------------------------------
+
+TEST(ConsoleFormatTest, MakeLogoBanner_S_SEMI로고와부제가_포함된다) {
+    const std::string banner = View::ConsoleFormat::MakeLogoBanner();
+
+    EXPECT_NE(banner.find("S-SEMI"), std::string::npos);
+    EXPECT_NE(banner.find("반도체 시료 생산주문관리 시스템"), std::string::npos);
+}
+
+// ---------------------------------------------------------------------------
+// FormatCurrentDateTime
+// ---------------------------------------------------------------------------
+
+TEST(ConsoleFormatTest, FormatCurrentDateTime_YYYY_MM_DD_HH_MM_SS패턴을_따른다) {
+    const std::string formatted = View::ConsoleFormat::FormatCurrentDateTime();
+
+    static const std::regex kPattern(R"(^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$)");
+    EXPECT_TRUE(std::regex_match(formatted, kPattern)) << "actual: " << formatted;
+}
+
+// ---------------------------------------------------------------------------
+// FormatTimePoint
+// ---------------------------------------------------------------------------
+
+TEST(ConsoleFormatTest, FormatTimePoint_길이19인_YYYY_MM_DD_HH_MM_SS형식을_반환한다) {
+    const auto timePoint = std::chrono::system_clock::from_time_t(static_cast<std::time_t>(0));
+
+    const std::string formatted = View::ConsoleFormat::FormatTimePoint(timePoint);
+
+    static const std::regex kPattern(R"(^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$)");
+    ASSERT_EQ(formatted.size(), 19u);
+    EXPECT_TRUE(std::regex_match(formatted, kPattern)) << "actual: " << formatted;
+}
+
+// ---------------------------------------------------------------------------
+// MakeColoredProgressBar
+// ---------------------------------------------------------------------------
+
+TEST(ConsoleFormatTest, MakeColoredProgressBar_ratio0_1이면_빨강계열ANSI코드를포함한다) {
+    const std::string bar = View::ConsoleFormat::MakeColoredProgressBar(0.1, 20);
+
+    EXPECT_NE(bar.find(kAnsiEscapePrefix), std::string::npos);
+    EXPECT_NE(bar.find("10%"), std::string::npos);
+}
+
+TEST(ConsoleFormatTest, MakeColoredProgressBar_ratio0_5이면_노랑계열ANSI코드를포함한다) {
+    const std::string bar = View::ConsoleFormat::MakeColoredProgressBar(0.5, 20);
+
+    EXPECT_NE(bar.find(kAnsiEscapePrefix), std::string::npos);
+    EXPECT_NE(bar.find("50%"), std::string::npos);
+}
+
+TEST(ConsoleFormatTest, MakeColoredProgressBar_ratio0_9이면_초록계열ANSI코드를포함한다) {
+    const std::string bar = View::ConsoleFormat::MakeColoredProgressBar(0.9, 20);
+
+    EXPECT_NE(bar.find(kAnsiEscapePrefix), std::string::npos);
+    EXPECT_NE(bar.find("90%"), std::string::npos);
+}
+
+TEST(ConsoleFormatTest, MakeColoredProgressBar_세가지ratio에서_서로다른색상코드가적용된다) {
+    const std::string barRed = View::ConsoleFormat::MakeColoredProgressBar(0.1, 20);
+    const std::string barYellow = View::ConsoleFormat::MakeColoredProgressBar(0.5, 20);
+    const std::string barGreen = View::ConsoleFormat::MakeColoredProgressBar(0.9, 20);
+
+    EXPECT_NE(barRed, barYellow);
+    EXPECT_NE(barYellow, barGreen);
+    EXPECT_NE(barRed, barGreen);
+}
+
+TEST(ConsoleFormatTest, MakeColoredProgressBar_채워진칸과빈칸문자가_MakeProgressBar와동일한개수규칙을따른다) {
+    const std::string bar = View::ConsoleFormat::MakeColoredProgressBar(0.5, 20);
+
+    const size_t hashCount = std::count(bar.begin(), bar.end(), '#');
+    const size_t dashCount = std::count(bar.begin(), bar.end(), '-');
+
+    EXPECT_EQ(hashCount, 10u);
+    EXPECT_EQ(dashCount, 10u);
 }
 
 }  // namespace

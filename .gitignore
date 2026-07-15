@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# 런타임 데이터 파일(JSON 영속성 산출물)
+samples.json
+orders.json

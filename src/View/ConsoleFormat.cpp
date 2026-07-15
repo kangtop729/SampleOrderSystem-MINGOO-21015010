@@ -2,12 +2,72 @@
 
 #include <algorithm>
 #include <cmath>
+#include <ctime>
+#include <iomanip>
 #include <sstream>
 
 namespace View {
 namespace ConsoleFormat {
 
 namespace {
+
+constexpr const char* kAnsiReset = "\x1b[0m";
+
+const char* ColorToAnsiCode(Color color) {
+    switch (color) {
+        case Color::Red:
+            return "\x1b[31m";
+        case Color::Green:
+            return "\x1b[32m";
+        case Color::Yellow:
+            return "\x1b[33m";
+        case Color::Blue:
+            return "\x1b[34m";
+        case Color::Magenta:
+            return "\x1b[35m";
+        case Color::Cyan:
+            return "\x1b[36m";
+        case Color::BoldWhite:
+            return "\x1b[1;37m";
+        case Color::Default:
+        default:
+            return "";
+    }
+}
+
+Color OrderStatusToColor(Model::OrderStatus status) {
+    switch (status) {
+        case Model::OrderStatus::RESERVED:
+            return Color::Yellow;
+        case Model::OrderStatus::CONFIRMED:
+            return Color::Green;
+        case Model::OrderStatus::PRODUCING:
+            return Color::Cyan;
+        case Model::OrderStatus::RELEASE:
+            return Color::Magenta;
+        case Model::OrderStatus::REJECTED:
+            return Color::Red;
+    }
+    return Color::Default;
+}
+
+Color StockStatusToColor(Service::StockStatus status) {
+    switch (status) {
+        case Service::StockStatus::SUFFICIENT:
+            return Color::Green;
+        case Service::StockStatus::SHORTAGE:
+            return Color::Yellow;
+        case Service::StockStatus::DEPLETED:
+            return Color::Red;
+    }
+    return Color::Default;
+}
+
+std::string FormatTimeStruct(const std::tm& timeInfo) {
+    std::ostringstream oss;
+    oss << std::put_time(&timeInfo, "%Y-%m-%d %H:%M:%S");
+    return oss.str();
+}
 
 int Utf8DisplayLength(const std::string& text) {
     int length = 0;
@@ -152,11 +212,11 @@ std::string FormatThousands(long long value) {
 }
 
 std::string FormatOrderStatusBadge(Model::OrderStatus status) {
-    return "[" + OrderStatusToName(status) + "]";
+    return Colorize("[" + OrderStatusToName(status) + "]", OrderStatusToColor(status));
 }
 
 std::string FormatStockStatusBadge(Service::StockStatus status) {
-    return "[" + StockStatusToKoreanLabel(status) + "]";
+    return Colorize("[" + StockStatusToKoreanLabel(status) + "]", StockStatusToColor(status));
 }
 
 std::string FormatStockStatusKoreanLabel(Service::StockStatus status) {
@@ -165,6 +225,51 @@ std::string FormatStockStatusKoreanLabel(Service::StockStatus status) {
 
 std::string FormatErrorMessage(const std::string& message) {
     return "[오류] " + message + "\n";
+}
+
+std::string Colorize(const std::string& text, Color color) {
+    if (color == Color::Default) {
+        return text;
+    }
+    return std::string(ColorToAnsiCode(color)) + text + kAnsiReset;
+}
+
+std::string MakeLogoBanner() {
+    std::ostringstream oss;
+    oss << MakeDivider(60, '=') << "\n";
+    oss << Colorize("S-SEMI", Color::BoldWhite) << "\n";
+    oss << Colorize("반도체 시료 생산주문관리 시스템", Color::Cyan) << "\n";
+    oss << MakeDivider(60, '=') << "\n";
+    return oss.str();
+}
+
+std::string FormatCurrentDateTime() {
+    const std::time_t now = std::time(nullptr);
+    std::tm timeInfo{};
+    localtime_s(&timeInfo, &now);
+    return FormatTimeStruct(timeInfo);
+}
+
+std::string FormatTimePoint(std::chrono::system_clock::time_point tp) {
+    const std::time_t time = std::chrono::system_clock::to_time_t(tp);
+    std::tm timeInfo{};
+    localtime_s(&timeInfo, &time);
+    return FormatTimeStruct(timeInfo);
+}
+
+std::string MakeColoredProgressBar(double ratio, int width) {
+    const double clampedRatio = std::min(1.0, std::max(0.0, ratio));
+    constexpr double kLowThreshold = 0.3;
+    constexpr double kHighThreshold = 0.7;
+
+    Color color = Color::Green;
+    if (clampedRatio < kLowThreshold) {
+        color = Color::Red;
+    } else if (clampedRatio < kHighThreshold) {
+        color = Color::Yellow;
+    }
+
+    return Colorize(MakeProgressBar(clampedRatio, width), color);
 }
 
 }  // namespace ConsoleFormat

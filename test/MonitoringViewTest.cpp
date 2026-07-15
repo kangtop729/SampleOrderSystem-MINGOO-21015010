@@ -44,4 +44,21 @@ TEST(MonitoringViewTest, ShowStockStatuses_시료명재고상태라벨이_포함
     EXPECT_NE(output.find("여유"), std::string::npos);
 }
 
+TEST(MonitoringViewTest, ShowStockStatuses_색상ANSI코드와잔여율막대가_포함된다) {
+    std::ostringstream oss;
+    View::MonitoringView view(oss);
+    const std::vector<Service::SampleStockStatus> statuses = {
+        Service::SampleStockStatus{"SMP-001", "Alpha", 0, 5, Service::StockStatus::DEPLETED},
+        Service::SampleStockStatus{"SMP-002", "Beta", 100, 5, Service::StockStatus::SUFFICIENT},
+    };
+
+    view.ShowStockStatuses(statuses);
+
+    const std::string output = oss.str();
+    EXPECT_NE(output.find("\x1b["), std::string::npos);
+    const bool hasBarChar =
+        (output.find('#') != std::string::npos) || (output.find('-') != std::string::npos);
+    EXPECT_TRUE(hasBarChar);
+}
+
 }  // namespace

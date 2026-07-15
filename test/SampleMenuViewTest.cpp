@@ -49,6 +49,23 @@ TEST(SampleMenuViewTest, ShowSampleTable_각샘플의ID와이름이_포함된다
     EXPECT_NE(output.find("Beta"), std::string::npos);
 }
 
+TEST(SampleMenuViewTest, ShowSampleTable_헤더에_요구된컬럼명들이_포함된다) {
+    std::ostringstream oss;
+    View::SampleMenuView view(oss);
+    const std::vector<Model::Sample> samples = {
+        Model::Sample("SMP-001", "Alpha", 10.0, 0.9, 100),
+    };
+
+    view.ShowSampleTable(samples);
+
+    const std::string output = oss.str();
+    EXPECT_NE(output.find("ID"), std::string::npos);
+    EXPECT_NE(output.find("시료명"), std::string::npos);
+    EXPECT_NE(output.find("평균생산시간"), std::string::npos);
+    EXPECT_NE(output.find("수율"), std::string::npos);
+    EXPECT_NE(output.find("현재 재고"), std::string::npos);
+}
+
 TEST(SampleMenuViewTest, ShowError_메시지가_그대로포함된다) {
     std::ostringstream oss;
     View::SampleMenuView view(oss);
