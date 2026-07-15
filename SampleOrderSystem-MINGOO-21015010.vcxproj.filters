@@ -58,114 +58,144 @@
     <Filter Include="src\Model">
       <UniqueIdentifier>{9c1f8a1a-1b2a-4b3c-8d4e-5f6a7b8c9d0d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Controller">
+      <UniqueIdentifier>{a1b2c3d4-1111-4b3c-8d4e-5f6a7b8c9d01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Repository">
+      <UniqueIdentifier>{a1b2c3d4-1111-4b3c-8d4e-5f6a7b8c9d02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Serialization">
+      <UniqueIdentifier>{a1b2c3d4-1111-4b3c-8d4e-5f6a7b8c9d03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Service">
+      <UniqueIdentifier>{a1b2c3d4-1111-4b3c-8d4e-5f6a7b8c9d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\View">
+      <UniqueIdentifier>{a1b2c3d4-1111-4b3c-8d4e-5f6a7b8c9d05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ThirdParty">
+      <UniqueIdentifier>{a1b2c3d4-1111-4b3c-8d4e-5f6a7b8c9d06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ThirdParty\nlohmann">
+      <UniqueIdentifier>{a1b2c3d4-1111-4b3c-8d4e-5f6a7b8c9d07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test\TestMain.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\SampleTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\OrderTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\SampleSerializationTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\OrderSerializationTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\JsonSampleRepositoryTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\JsonOrderRepositoryTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\SampleServiceTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\ProductionCalculationTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\ProductionLineServiceTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\StockStatusClassificationTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\MonitoringServiceTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\ConsoleFormatTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="test\ReleaseServiceTest.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Model\Sample.cpp">
-      <Filter>src\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Model\Order.cpp">
-      <Filter>src\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="src\main.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
+    <ClCompile Include="test\TestMain.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\SampleTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\OrderTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\SampleSerializationTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\OrderSerializationTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\JsonSampleRepositoryTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\JsonOrderRepositoryTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\SampleServiceTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\ProductionCalculationTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\ProductionLineServiceTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\StockStatusClassificationTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\MonitoringServiceTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\ConsoleFormatTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\ReleaseServiceTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\OrderServiceTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\MainViewTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\SampleMenuViewTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\OrderMenuViewTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\ApprovalMenuViewTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\MonitoringViewTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\ProductionLineViewTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\ReleaseMenuViewTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\ConsoleInputTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\SampleMenuControllerTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\OrderMenuControllerTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\ApprovalMenuControllerTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\MonitoringControllerTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\ProductionLineControllerTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\ReleaseMenuControllerTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="test\MainControllerTest.cpp"><Filter>test</Filter></ClCompile>
+    <ClCompile Include="src\Model\Sample.cpp"><Filter>src\Model</Filter></ClCompile>
+    <ClCompile Include="src\Model\Order.cpp"><Filter>src\Model</Filter></ClCompile>
+    <ClCompile Include="src\Model\ProductionJob.cpp"><Filter>src\Model</Filter></ClCompile>
+    <ClCompile Include="src\Repository\JsonSampleRepository.cpp"><Filter>src\Repository</Filter></ClCompile>
+    <ClCompile Include="src\Repository\JsonOrderRepository.cpp"><Filter>src\Repository</Filter></ClCompile>
+    <ClCompile Include="src\Repository\RepositoryException.cpp"><Filter>src\Repository</Filter></ClCompile>
+    <ClCompile Include="src\Serialization\SampleSerialization.cpp"><Filter>src\Serialization</Filter></ClCompile>
+    <ClCompile Include="src\Serialization\OrderSerialization.cpp"><Filter>src\Serialization</Filter></ClCompile>
+    <ClCompile Include="src\Service\SampleService.cpp"><Filter>src\Service</Filter></ClCompile>
+    <ClCompile Include="src\Service\OrderService.cpp"><Filter>src\Service</Filter></ClCompile>
+    <ClCompile Include="src\Service\ProductionLineService.cpp"><Filter>src\Service</Filter></ClCompile>
+    <ClCompile Include="src\Service\MonitoringService.cpp"><Filter>src\Service</Filter></ClCompile>
+    <ClCompile Include="src\Service\ReleaseService.cpp"><Filter>src\Service</Filter></ClCompile>
+    <ClCompile Include="src\View\ConsoleFormat.cpp"><Filter>src\View</Filter></ClCompile>
+    <ClCompile Include="src\View\MainView.cpp"><Filter>src\View</Filter></ClCompile>
+    <ClCompile Include="src\View\SampleMenuView.cpp"><Filter>src\View</Filter></ClCompile>
+    <ClCompile Include="src\View\OrderMenuView.cpp"><Filter>src\View</Filter></ClCompile>
+    <ClCompile Include="src\View\ApprovalMenuView.cpp"><Filter>src\View</Filter></ClCompile>
+    <ClCompile Include="src\View\MonitoringView.cpp"><Filter>src\View</Filter></ClCompile>
+    <ClCompile Include="src\View\ProductionLineView.cpp"><Filter>src\View</Filter></ClCompile>
+    <ClCompile Include="src\View\ReleaseMenuView.cpp"><Filter>src\View</Filter></ClCompile>
+    <ClCompile Include="src\Controller\ConsoleInput.cpp"><Filter>src\Controller</Filter></ClCompile>
+    <ClCompile Include="src\Controller\SampleMenuController.cpp"><Filter>src\Controller</Filter></ClCompile>
+    <ClCompile Include="src\Controller\OrderMenuController.cpp"><Filter>src\Controller</Filter></ClCompile>
+    <ClCompile Include="src\Controller\ApprovalMenuController.cpp"><Filter>src\Controller</Filter></ClCompile>
+    <ClCompile Include="src\Controller\MonitoringController.cpp"><Filter>src\Controller</Filter></ClCompile>
+    <ClCompile Include="src\Controller\ProductionLineController.cpp"><Filter>src\Controller</Filter></ClCompile>
+    <ClCompile Include="src\Controller\ReleaseMenuController.cpp"><Filter>src\Controller</Filter></ClCompile>
+    <ClCompile Include="src\Controller\MainController.cpp"><Filter>src\Controller</Filter></ClCompile>
+    <ClCompile Include="src\main.cpp"><Filter>src</Filter></ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Model\OrderStatus.h">
-      <Filter>src\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Model\Sample.h">
-      <Filter>src\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Model\Order.h">
-      <Filter>src\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="test\mocks\MockSampleRepository.h">
-      <Filter>test\mocks</Filter>
-    </ClInclude>
+    <ClInclude Include="src\Model\OrderStatus.h"><Filter>src\Model</Filter></ClInclude>
+    <ClInclude Include="src\Model\Sample.h"><Filter>src\Model</Filter></ClInclude>
+    <ClInclude Include="src\Model\Order.h"><Filter>src\Model</Filter></ClInclude>
+    <ClInclude Include="src\Model\ProductionJob.h"><Filter>src\Model</Filter></ClInclude>
+    <ClInclude Include="src\Repository\IRepository.h"><Filter>src\Repository</Filter></ClInclude>
+    <ClInclude Include="src\Repository\ISampleRepository.h"><Filter>src\Repository</Filter></ClInclude>
+    <ClInclude Include="src\Repository\IOrderRepository.h"><Filter>src\Repository</Filter></ClInclude>
+    <ClInclude Include="src\Repository\JsonSampleRepository.h"><Filter>src\Repository</Filter></ClInclude>
+    <ClInclude Include="src\Repository\JsonOrderRepository.h"><Filter>src\Repository</Filter></ClInclude>
+    <ClInclude Include="src\Repository\RepositoryException.h"><Filter>src\Repository</Filter></ClInclude>
+    <ClInclude Include="src\Serialization\SampleSerialization.h"><Filter>src\Serialization</Filter></ClInclude>
+    <ClInclude Include="src\Serialization\OrderSerialization.h"><Filter>src\Serialization</Filter></ClInclude>
+    <ClInclude Include="src\Service\SampleService.h"><Filter>src\Service</Filter></ClInclude>
+    <ClInclude Include="src\Service\OrderService.h"><Filter>src\Service</Filter></ClInclude>
+    <ClInclude Include="src\Service\ProductionLineService.h"><Filter>src\Service</Filter></ClInclude>
+    <ClInclude Include="src\Service\MonitoringService.h"><Filter>src\Service</Filter></ClInclude>
+    <ClInclude Include="src\Service\ReleaseService.h"><Filter>src\Service</Filter></ClInclude>
+    <ClInclude Include="src\View\ConsoleFormat.h"><Filter>src\View</Filter></ClInclude>
+    <ClInclude Include="src\View\MainView.h"><Filter>src\View</Filter></ClInclude>
+    <ClInclude Include="src\View\SampleMenuView.h"><Filter>src\View</Filter></ClInclude>
+    <ClInclude Include="src\View\OrderMenuView.h"><Filter>src\View</Filter></ClInclude>
+    <ClInclude Include="src\View\ApprovalMenuView.h"><Filter>src\View</Filter></ClInclude>
+    <ClInclude Include="src\View\MonitoringView.h"><Filter>src\View</Filter></ClInclude>
+    <ClInclude Include="src\View\ProductionLineView.h"><Filter>src\View</Filter></ClInclude>
+    <ClInclude Include="src\View\ReleaseMenuView.h"><Filter>src\View</Filter></ClInclude>
+    <ClInclude Include="src\Controller\ConsoleInput.h"><Filter>src\Controller</Filter></ClInclude>
+    <ClInclude Include="src\Controller\SampleMenuController.h"><Filter>src\Controller</Filter></ClInclude>
+    <ClInclude Include="src\Controller\OrderMenuController.h"><Filter>src\Controller</Filter></ClInclude>
+    <ClInclude Include="src\Controller\ApprovalMenuController.h"><Filter>src\Controller</Filter></ClInclude>
+    <ClInclude Include="src\Controller\MonitoringController.h"><Filter>src\Controller</Filter></ClInclude>
+    <ClInclude Include="src\Controller\ProductionLineController.h"><Filter>src\Controller</Filter></ClInclude>
+    <ClInclude Include="src\Controller\ReleaseMenuController.h"><Filter>src\Controller</Filter></ClInclude>
+    <ClInclude Include="src\Controller\MainController.h"><Filter>src\Controller</Filter></ClInclude>
+    <ClInclude Include="src\ThirdParty\nlohmann\json.hpp"><Filter>src\ThirdParty\nlohmann</Filter></ClInclude>
+    <ClInclude Include="test\mocks\MockSampleRepository.h"><Filter>test\mocks</Filter></ClInclude>
+    <ClInclude Include="test\mocks\MockOrderRepository.h"><Filter>test\mocks</Filter></ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="CLAUDE.md" />
     <None Include="PRD.md" />
     <None Include="README.md" />
-    <None Include=".claude\agents\orchestrator.md">
-      <Filter>.claude\agents</Filter>
-    </None>
-    <None Include=".claude\agents\domain-modeler.md">
-      <Filter>.claude\agents</Filter>
-    </None>
-    <None Include=".claude\agents\persistence-engineer.md">
-      <Filter>.claude\agents</Filter>
-    </None>
-    <None Include=".claude\agents\tdd-test-engineer.md">
-      <Filter>.claude\agents</Filter>
-    </None>
-    <None Include=".claude\agents\clean-code-reviewer.md">
-      <Filter>.claude\agents</Filter>
-    </None>
-    <None Include=".claude\skills\test-driven-development\SKILL.md">
-      <Filter>.claude\skills\test-driven-development</Filter>
-    </None>
-    <None Include="docs_implement\Overall\PLAN.md">
-      <Filter>docs_implement\Overall</Filter>
-    </None>
-    <None Include="docs_implement\ConsoleMVC-MINGOO-21015010\PLAN.md">
-      <Filter>docs_implement\ConsoleMVC-MINGOO-21015010</Filter>
-    </None>
-    <None Include="docs_implement\DataPersistence-MINGOO-21015010\PLAN.md">
-      <Filter>docs_implement\DataPersistence-MINGOO-21015010</Filter>
-    </None>
-    <None Include="docs_implement\DataMonitor-MINGOO-21015010\PLAN.md">
-      <Filter>docs_implement\DataMonitor-MINGOO-21015010</Filter>
-    </None>
-    <None Include="docs_implement\DummyDataGenerator-MINGOO-21015010\PLAN.md">
-      <Filter>docs_implement\DummyDataGenerator-MINGOO-21015010</Filter>
-    </None>
-    <None Include="docs_implement\SampleOrderSystem-MINGOO-21015010\PLAN.md">
-      <Filter>docs_implement\SampleOrderSystem-MINGOO-21015010</Filter>
-    </None>
+    <None Include=".claude\agents\orchestrator.md"><Filter>.claude\agents</Filter></None>
+    <None Include=".claude\agents\domain-modeler.md"><Filter>.claude\agents</Filter></None>
+    <None Include=".claude\agents\persistence-engineer.md"><Filter>.claude\agents</Filter></None>
+    <None Include=".claude\agents\tdd-test-engineer.md"><Filter>.claude\agents</Filter></None>
+    <None Include=".claude\agents\clean-code-reviewer.md"><Filter>.claude\agents</Filter></None>
+    <None Include=".claude\skills\test-driven-development\SKILL.md"><Filter>.claude\skills\test-driven-development</Filter></None>
+    <None Include="docs_implement\Overall\PLAN.md"><Filter>docs_implement\Overall</Filter></None>
+    <None Include="docs_implement\ConsoleMVC-MINGOO-21015010\PLAN.md"><Filter>docs_implement\ConsoleMVC-MINGOO-21015010</Filter></None>
+    <None Include="docs_implement\DataPersistence-MINGOO-21015010\PLAN.md"><Filter>docs_implement\DataPersistence-MINGOO-21015010</Filter></None>
+    <None Include="docs_implement\DataMonitor-MINGOO-21015010\PLAN.md"><Filter>docs_implement\DataMonitor-MINGOO-21015010</Filter></None>
+    <None Include="docs_implement\DummyDataGenerator-MINGOO-21015010\PLAN.md"><Filter>docs_implement\DummyDataGenerator-MINGOO-21015010</Filter></None>
+    <None Include="docs_implement\SampleOrderSystem-MINGOO-21015010\PLAN.md"><Filter>docs_implement\SampleOrderSystem-MINGOO-21015010</Filter></None>
   </ItemGroup>
 </Project>
