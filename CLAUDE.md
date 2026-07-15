@@ -42,8 +42,10 @@ msbuild SampleOrderSystem-MINGOO-21015010.vcxproj /p:Configuration=Debug /p:Plat
    - `[fix]` 버그 수정
    - `[docs]` 문서 변경
    - `[test]` 테스트 추가/수정, 테스트 인프라 변경
-5. **테스트 동반**: Service/Repository 계층 로직은 gmock 기반 단위 테스트를 함께 작성한다. 특히 아래 경계값은
-   반드시 테스트한다.
+5. **TDD**: 새 기능/버그 수정 전에는 [`.claude/skills/test-driven-development/SKILL.md`](.claude/skills/test-driven-development/SKILL.md)의
+   Red-Green-Refactor 사이클을 따른다 — 실패하는 테스트를 먼저 작성하고 실패를 확인한 뒤, 최소한의
+   구현으로 통과시키고, 통과 상태를 유지하며 리팩토링한다. Service/Repository 계층은 gmock 기반
+   단위 테스트를 함께 작성하며, 특히 아래 경계값은 반드시 테스트한다.
    - 재고가 정확히 충분/1개 부족/전량 부족한 경우
    - 수율에 따른 실 생산량 계산 (`ceil(부족분 / 수율)`)
    - 재고 상태 분류 경계값 (여유/부족/고갈, 특히 0)

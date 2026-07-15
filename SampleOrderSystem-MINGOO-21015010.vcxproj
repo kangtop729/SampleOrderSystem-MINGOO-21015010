@@ -147,6 +147,7 @@
     <None Include=".claude\agents\persistence-engineer.md" />
     <None Include=".claude\agents\tdd-test-engineer.md" />
     <None Include=".claude\agents\clean-code-reviewer.md" />
+    <None Include=".claude\skills\test-driven-development\SKILL.md" />
     <None Include="docs_implement\Overall\PLAN.md" />
     <None Include="docs_implement\ConsoleMVC-MINGOO-21015010\PLAN.md" />
     <None Include="docs_implement\DataPersistence-MINGOO-21015010\PLAN.md" />
