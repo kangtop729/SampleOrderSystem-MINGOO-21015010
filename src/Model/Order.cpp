@@ -15,6 +15,15 @@ Order::Order(std::string orderNo, std::string sampleId, std::string customerName
       status_(OrderStatus::RESERVED),
       createdAt_(std::chrono::system_clock::now()) {}
 
+Order::Order(std::string orderNo, std::string sampleId, std::string customerName, int quantity, OrderStatus status,
+             std::chrono::system_clock::time_point createdAt)
+    : orderNo_(std::move(orderNo)),
+      sampleId_(std::move(sampleId)),
+      customerName_(std::move(customerName)),
+      quantity_(quantity),
+      status_(status),
+      createdAt_(createdAt) {}
+
 const std::string& Order::GetOrderNo() const {
     return orderNo_;
 }

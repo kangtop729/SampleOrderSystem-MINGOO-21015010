@@ -141,6 +141,11 @@
   <ItemGroup>
     <ClCompile Include="src\Model\Sample.cpp" />
     <ClCompile Include="src\Model\Order.cpp" />
+    <ClCompile Include="src\Serialization\SampleSerialization.cpp" />
+    <ClCompile Include="src\Serialization\OrderSerialization.cpp" />
+    <ClCompile Include="src\Repository\RepositoryException.cpp" />
+    <ClCompile Include="src\Repository\JsonSampleRepository.cpp" />
+    <ClCompile Include="src\Repository\JsonOrderRepository.cpp" />
     <ClCompile Include="src\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -157,11 +162,36 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="test\SampleSerializationTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\OrderSerializationTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\JsonSampleRepositoryTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\JsonOrderRepositoryTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Model\OrderStatus.h" />
     <ClInclude Include="src\Model\Sample.h" />
     <ClInclude Include="src\Model\Order.h" />
+    <ClInclude Include="src\Serialization\SampleSerialization.h" />
+    <ClInclude Include="src\Serialization\OrderSerialization.h" />
+    <ClInclude Include="src\Repository\IRepository.h" />
+    <ClInclude Include="src\Repository\ISampleRepository.h" />
+    <ClInclude Include="src\Repository\IOrderRepository.h" />
+    <ClInclude Include="src\Repository\RepositoryException.h" />
+    <ClInclude Include="src\Repository\JsonSampleRepository.h" />
+    <ClInclude Include="src\Repository\JsonOrderRepository.h" />
+    <ClInclude Include="src\ThirdParty\nlohmann\json.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

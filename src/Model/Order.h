@@ -6,6 +6,8 @@
 
 #include "OrderStatus.h"
 
+class OrderSerialization;
+
 namespace Model {
 
 // 정의되지 않은 주문 상태 전이를 시도할 때 던지는 예외.
@@ -40,6 +42,13 @@ public:
     void Release();
 
 private:
+    friend class ::OrderSerialization;
+
+    // 저장된 데이터로부터 Order를 복원하기 위한 생성자.
+    // Serialization 계층(OrderSerialization::FromJson)에서만 사용한다.
+    Order(std::string orderNo, std::string sampleId, std::string customerName, int quantity, OrderStatus status,
+          std::chrono::system_clock::time_point createdAt);
+
     // 현재 상태가 requiredCurrentStatus와 일치할 때만 nextStatus로 전이한다.
     // 그렇지 않으면 InvalidOrderTransitionException을 던진다.
     void TransitionTo(OrderStatus requiredCurrentStatus, OrderStatus nextStatus);

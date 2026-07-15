@@ -66,6 +66,18 @@
     <ClCompile Include="test\OrderTest.cpp">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="test\SampleSerializationTest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\OrderSerializationTest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\JsonSampleRepositoryTest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\JsonOrderRepositoryTest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
     <ClCompile Include="src\Model\Sample.cpp">
       <Filter>src\Model</Filter>
     </ClCompile>
