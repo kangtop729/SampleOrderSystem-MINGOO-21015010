@@ -1,5 +1,6 @@
 #pragma once
 
+#include <optional>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -38,6 +39,7 @@ public:
 
     std::vector<Model::Sample> GetAllSamples() const;
     std::vector<Model::Sample> SearchByName(const std::string& keyword) const;
+    std::optional<Model::Sample> FindOne(const std::string& sampleId) const;
 
 private:
     void ValidateFields(const std::string& sampleId, const std::string& name,

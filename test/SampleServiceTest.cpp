@@ -160,3 +160,29 @@ TEST_F(SampleServiceTest, SearchByName_repository의_FindByName에_keyword를_�
     ASSERT_EQ(actual.size(), 1u);
     EXPECT_EQ(actual[0].GetName(), "웨이퍼A");
 }
+
+TEST_F(SampleServiceTest, FindOne_repository의_FindById_결과를_그대로_반환한다) {
+    Sample expected("SMP-001", "테스트시료", 30.0, 0.8, 10);
+    EXPECT_CALL(repository_, FindById(std::string("SMP-001"))).WillOnce(Return(expected));
+
+    SampleService service(repository_);
+
+    std::optional<Sample> actual = service.FindOne("SMP-001");
+
+    ASSERT_TRUE(actual.has_value());
+    EXPECT_EQ(actual->GetSampleId(), "SMP-001");
+    EXPECT_EQ(actual->GetName(), "테스트시료");
+    EXPECT_EQ(actual->GetAverageProductionTimeMinutes(), 30.0);
+    EXPECT_EQ(actual->GetYield(), 0.8);
+    EXPECT_EQ(actual->GetStock(), 10);
+}
+
+TEST_F(SampleServiceTest, FindOne_존재하지않는_sampleId면_nullopt를_반환한다) {
+    EXPECT_CALL(repository_, FindById(std::string("SMP-999"))).WillOnce(Return(std::nullopt));
+
+    SampleService service(repository_);
+
+    std::optional<Sample> actual = service.FindOne("SMP-999");
+
+    EXPECT_FALSE(actual.has_value());
+}

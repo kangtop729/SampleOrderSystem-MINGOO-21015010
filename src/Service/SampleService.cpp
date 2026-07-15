@@ -47,4 +47,8 @@ std::vector<Model::Sample> SampleService::SearchByName(const std::string& keywor
     return repository_.FindByName(keyword);
 }
 
+std::optional<Model::Sample> SampleService::FindOne(const std::string& sampleId) const {
+    return repository_.FindById(sampleId);
+}
+
 }  // namespace Service
