@@ -236,9 +236,15 @@ std::string Colorize(const std::string& text, Color color) {
 
 std::string MakeLogoBanner() {
     std::ostringstream oss;
+    const std::string box(64, '#');
+    oss << Colorize(box, Color::Cyan) << "\n";
+    oss << Colorize("##", Color::Cyan) << "   "
+        << Colorize("S-SEMI", Color::BoldWhite)
+        << "  |  Semiconductor Sample Order System" << std::string(19, ' ')
+        << Colorize("##", Color::Cyan) << "\n";
+    oss << Colorize(box, Color::Cyan) << "\n";
     oss << MakeDivider(60, '=') << "\n";
-    oss << Colorize("S-SEMI", Color::BoldWhite) << "\n";
-    oss << Colorize("반도체 시료 생산주문관리 시스템", Color::Cyan) << "\n";
+    oss << Colorize(">> 반도체 시료 생산주문관리 시스템 <<", Color::BoldWhite) << "\n";
     oss << MakeDivider(60, '=') << "\n";
     return oss.str();
 }

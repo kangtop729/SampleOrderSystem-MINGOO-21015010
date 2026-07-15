@@ -8,7 +8,7 @@
 
 namespace Controller {
 
-// 생산 현황 메뉴(현재 작업/대기열 조회, 완료 처리)의 입출력 흐름을 담당하는 Controller.
+// 생산 현황 메뉴(현재 작업/대기열 조회, 자동 완료 반영)의 입출력 흐름을 담당하는 Controller.
 class ProductionLineController {
 public:
     ProductionLineController(std::istream& in, std::ostream& out, View::ProductionLineView& view,
@@ -18,7 +18,6 @@ public:
 
 private:
     void ShowSubMenu() const;
-    void HandleComplete();
 
     std::istream& in_;
     std::ostream& out_;

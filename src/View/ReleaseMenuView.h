@@ -17,6 +17,7 @@ public:
     void ShowConfirmedOrders(const std::vector<Model::Order>& orders) const;
     void ShowReleaseResult(const std::string& orderNo) const;
     void ShowError(const std::string& message) const;
+    void ShowInvalidSelection() const;
 
 private:
     std::ostream& out_;

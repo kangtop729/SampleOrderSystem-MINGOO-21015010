@@ -5,7 +5,7 @@
 namespace Controller {
 
 namespace {
-const std::string kBackSentinel = "0";
+constexpr int kBackSelection = 0;
 }  // namespace
 
 ReleaseMenuController::ReleaseMenuController(std::istream& in, std::ostream& out, View::ReleaseMenuView& view,
@@ -13,13 +13,26 @@ ReleaseMenuController::ReleaseMenuController(std::istream& in, std::ostream& out
     : in_(in), out_(out), view_(view), releaseService_(releaseService) {}
 
 void ReleaseMenuController::Run() {
-    view_.ShowConfirmedOrders(releaseService_.GetConfirmedOrders());
+    const std::vector<Model::Order> confirmedOrders = releaseService_.GetConfirmedOrders();
+    view_.ShowConfirmedOrders(confirmedOrders);
 
     while (true) {
-        const std::string orderNo = ConsoleInput::ReadLine(in_, out_, "주문번호(0=뒤로) > ");
-        if (orderNo == kBackSentinel) {
+        const auto selectionOpt = ConsoleInput::ReadInt(in_, out_, "번호(0=뒤로) > ");
+        if (!selectionOpt.has_value()) {
+            view_.ShowInvalidSelection();
+            continue;
+        }
+
+        const int selection = *selectionOpt;
+        if (selection == kBackSelection) {
             return;
         }
+        if (selection < 1 || static_cast<size_t>(selection) > confirmedOrders.size()) {
+            view_.ShowInvalidSelection();
+            continue;
+        }
+
+        const std::string orderNo = confirmedOrders[static_cast<size_t>(selection - 1)].GetOrderNo();
 
         try {
             releaseService_.ReleaseOrder(orderNo);
