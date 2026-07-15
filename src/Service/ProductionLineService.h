@@ -45,7 +45,16 @@ public:
     void CompleteCurrentJob();
 
 private:
+    // FindById로 조회한 Sample과, 해당 주문에 대한 부족분/실 생산량 계산 결과를 함께 묶어 반환한다.
+    // BuildProductionJob과 CompleteCurrentJob이 동일한 조회/계산 로직을 중복하지 않도록 공유한다.
+    struct OrderProductionCalculation {
+        Model::Sample sample;
+        int shortfall;
+        int actualProductionQty;
+    };
+
     std::vector<Model::Order> GetSortedProducingOrders() const;
+    OrderProductionCalculation CalculateForOrder(const Model::Order& order) const;
     Model::ProductionJob BuildProductionJob(const Model::Order& order) const;
 
     Repository::IOrderRepository& orderRepository_;

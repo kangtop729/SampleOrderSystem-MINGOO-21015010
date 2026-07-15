@@ -38,7 +38,8 @@ double ProductionLineService::CalculateTotalProductionMinutes(double averageProd
     return averageProductionTimeMinutes * actualProductionQty;
 }
 
-Model::ProductionJob ProductionLineService::BuildProductionJob(const Model::Order& order) const {
+ProductionLineService::OrderProductionCalculation ProductionLineService::CalculateForOrder(
+    const Model::Order& order) const {
     auto sample = sampleRepository_.FindById(order.GetSampleId());
     if (!sample.has_value()) {
         throw std::logic_error("존재하지 않는 sampleId입니다: " + order.GetSampleId());
@@ -46,11 +47,18 @@ Model::ProductionJob ProductionLineService::BuildProductionJob(const Model::Orde
 
     int shortfall = CalculateShortfall(order.GetQuantity(), sample->GetStock());
     int actualProductionQty = CalculateActualProductionQty(shortfall, sample->GetYield());
-    double totalProductionMinutes =
-        CalculateTotalProductionMinutes(sample->GetAverageProductionTimeMinutes(), actualProductionQty);
+
+    return OrderProductionCalculation{sample.value(), shortfall, actualProductionQty};
+}
+
+Model::ProductionJob ProductionLineService::BuildProductionJob(const Model::Order& order) const {
+    OrderProductionCalculation calculation = CalculateForOrder(order);
+    double totalProductionMinutes = CalculateTotalProductionMinutes(
+        calculation.sample.GetAverageProductionTimeMinutes(), calculation.actualProductionQty);
 
     return Model::ProductionJob(order.GetOrderNo(), order.GetSampleId(), order.GetCustomerName(), order.GetQuantity(),
-                                 sample->GetStock(), shortfall, actualProductionQty, totalProductionMinutes);
+                                 calculation.sample.GetStock(), calculation.shortfall, calculation.actualProductionQty,
+                                 totalProductionMinutes);
 }
 
 std::vector<Model::Order> ProductionLineService::GetSortedProducingOrders() const {
@@ -90,16 +98,10 @@ void ProductionLineService::CompleteCurrentJob() {
 
     Model::Order order = producingOrders.front();
 
-    auto sampleOpt = sampleRepository_.FindById(order.GetSampleId());
-    if (!sampleOpt.has_value()) {
-        throw std::logic_error("존재하지 않는 sampleId입니다: " + order.GetSampleId());
-    }
-    Model::Sample sample = sampleOpt.value();
+    OrderProductionCalculation calculation = CalculateForOrder(order);
 
-    int shortfall = CalculateShortfall(order.GetQuantity(), sample.GetStock());
-    int actualProductionQty = CalculateActualProductionQty(shortfall, sample.GetYield());
-
-    sample.IncreaseStock(actualProductionQty);
+    Model::Sample sample = calculation.sample;
+    sample.IncreaseStock(calculation.actualProductionQty);
     sampleRepository_.Update(sample);
 
     order.CompleteProduction();
