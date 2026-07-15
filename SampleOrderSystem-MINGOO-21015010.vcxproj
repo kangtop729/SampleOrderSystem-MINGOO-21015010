@@ -160,6 +160,14 @@
     <ClCompile Include="src\View\MonitoringView.cpp" />
     <ClCompile Include="src\View\ProductionLineView.cpp" />
     <ClCompile Include="src\View\ReleaseMenuView.cpp" />
+    <ClCompile Include="src\Controller\ConsoleInput.cpp" />
+    <ClCompile Include="src\Controller\SampleMenuController.cpp" />
+    <ClCompile Include="src\Controller\OrderMenuController.cpp" />
+    <ClCompile Include="src\Controller\ApprovalMenuController.cpp" />
+    <ClCompile Include="src\Controller\MonitoringController.cpp" />
+    <ClCompile Include="src\Controller\ProductionLineController.cpp" />
+    <ClCompile Include="src\Controller\ReleaseMenuController.cpp" />
+    <ClCompile Include="src\Controller\MainController.cpp" />
     <ClCompile Include="src\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -252,6 +260,38 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="test\ConsoleInputTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\SampleMenuControllerTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\OrderMenuControllerTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\ApprovalMenuControllerTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\MonitoringControllerTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\ProductionLineControllerTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\ReleaseMenuControllerTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test\MainControllerTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Model\OrderStatus.h" />
@@ -280,6 +320,14 @@
     <ClInclude Include="src\View\MonitoringView.h" />
     <ClInclude Include="src\View\ProductionLineView.h" />
     <ClInclude Include="src\View\ReleaseMenuView.h" />
+    <ClInclude Include="src\Controller\ConsoleInput.h" />
+    <ClInclude Include="src\Controller\SampleMenuController.h" />
+    <ClInclude Include="src\Controller\OrderMenuController.h" />
+    <ClInclude Include="src\Controller\ApprovalMenuController.h" />
+    <ClInclude Include="src\Controller\MonitoringController.h" />
+    <ClInclude Include="src\Controller\ProductionLineController.h" />
+    <ClInclude Include="src\Controller\ReleaseMenuController.h" />
+    <ClInclude Include="src\Controller\MainController.h" />
     <ClInclude Include="test\mocks\MockSampleRepository.h" />
     <ClInclude Include="test\mocks\MockOrderRepository.h" />
   </ItemGroup>
