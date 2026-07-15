@@ -8,13 +8,9 @@
 가상의 반도체 회사 S-Semi가 시료(Sample) 주문 접수부터 생산, 출고까지의 흐름을 체계적으로 관리하기 위해
 사용한다. 상세 기능 명세와 구현 계획은 [docs_implement/SampleOrderSystem-MINGOO-21015010/PLAN.md](docs_implement/SampleOrderSystem-MINGOO-21015010/PLAN.md)를 참고한다.
 
-이 저장소는 "[미션2] 프로젝트 개발"에 해당하며, 아래 4개의 PoC(별도 저장소)에서 검증한 구조/패턴을 이식하여
-구현한다. 전체 로드맵은 [docs_implement/Overall/PLAN.md](docs_implement/Overall/PLAN.md)에 정리되어 있다.
-
-- ConsoleMVC-MINGOO-21015010 (MVC 골격)
-- DataPersistence-MINGOO-21015010 (JSON 영속성 + CRUD)
-- DataMonitor-MINGOO-21015010 (콘솔 실시간 데이터 조회)
-- DummyDataGenerator-MINGOO-21015010 (더미 데이터 생성)
+이 저장소는 "[미션2] 프로젝트 개발"에 해당한다. 4개의 PoC(별도 저장소, 학습·참고용)와의 관계 —
+코드를 공유하지 않되 영속성 방식(JSON) 등은 일치시켜야 한다는 원칙 — 및 전체 로드맵은
+[docs_implement/Overall/PLAN.md](docs_implement/Overall/PLAN.md)를 참고한다.
 
 ## 기술 스택
 

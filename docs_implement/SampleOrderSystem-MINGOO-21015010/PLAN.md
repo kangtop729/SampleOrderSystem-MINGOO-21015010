@@ -10,7 +10,8 @@
 
 - Repository: `SampleOrderSystem-MINGOO-21015010` (본 저장소, 이미 vcxproj/gmock 세팅됨)
 - 기술 스택: C++ / Visual Studio, GoogleTest/GoogleMock, nlohmann/json
-- 아키텍처: MVC (ConsoleMVC PoC 이식) + Repository 패턴 (DataPersistence PoC 이식)
+- 아키텍처: MVC + Repository 패턴 (PoC와 코드는 공유하지 않되, "MVC 구조"·"JSON 영속성"이라는
+  기술적 선택은 ConsoleMVC/DataPersistence PoC와 동일하게 유지)
 
 ## 3. 핵심 도메인 규칙 정리
 
@@ -55,7 +56,7 @@ SampleOrderSystem-MINGOO-21015010/
 │   ├── Repository/
 │   │   ├── ISampleRepository.h
 │   │   ├── IOrderRepository.h
-│   │   └── JsonSampleRepository / JsonOrderRepository (DataPersistence PoC 이식)
+│   │   └── JsonSampleRepository / JsonOrderRepository (자체 구현, JSON 영속성 방식은 DataPersistence PoC와 동일)
 │   ├── Service/
 │   │   ├── SampleService.h/.cpp        # 시료 등록/조회/검색
 │   │   ├── OrderService.h/.cpp         # 주문 예약/승인/거절, 재고 판정
@@ -76,7 +77,8 @@ SampleOrderSystem-MINGOO-21015010/
 
 ### Phase 1 — 프로젝트 기반 다지기
 - `CLAUDE.md`(에이전트 작업 규칙, 빌드/테스트 명령, 코딩 컨벤션), `PRD.md`(기능 명세를 요구사항 문서로 정리) 작성
-- ConsoleMVC PoC의 Model/View/Controller 골격을 본 프로젝트 구조로 이식
+- MVC 역할 분리 구조를 본 프로젝트에 맞게 자체적으로 설계 (ConsoleMVC PoC의 코드를 가져오지 않되,
+  "역할이 분리된 구조"라는 개념은 동일하게 유지)
 - gmock 기반 테스트 하네스 셋업 확인 (`packages.config`의 gmock 활용)
 
 ### Phase 2 — 도메인 모델 구현
@@ -85,7 +87,9 @@ SampleOrderSystem-MINGOO-21015010/
 - 단위 테스트: 상태 전이 유효성 검증
 
 ### Phase 3 — 영속성 계층 통합
-- DataPersistence PoC의 `IRepository<T>` 패턴을 `ISampleRepository`, `IOrderRepository`로 특화
+- `IRepository<T>` 스타일의 공통 인터페이스를 자체적으로 설계하고 `ISampleRepository`,
+  `IOrderRepository`로 특화 (DataPersistence PoC의 코드를 가져오지 않되, "JSON 파일 기반 영속성"이라는
+  선택은 동일하게 유지)
 - JSON 파일 스키마 확정 (samples.json, orders.json)
 - 단위 테스트: 저장/재로드 시 데이터 일치 검증
 

@@ -69,9 +69,10 @@ SampleOrderSystem-MINGOO-21015010/
 
 ## 관련 저장소 (PoC)
 
-이 프로젝트는 아래 PoC에서 검증한 구조를 이식하여 구현한다.
-
 - `ConsoleMVC-MINGOO-21015010` — MVC 스켈레톤 코드
 - `DataPersistence-MINGOO-21015010` — JSON 기반 데이터 영속성 및 CRUD
 - `DataMonitor-MINGOO-21015010` — 콘솔 기반 데이터 모니터링 도구
 - `DummyDataGenerator-MINGOO-21015010` — 테스트용 더미 데이터 생성 도구
+
+PoC와의 관계(코드 공유 여부, 일치해야 할 기술적 선택)는
+[docs_implement/Overall/PLAN.md](docs_implement/Overall/PLAN.md) 3절 참고.
