@@ -84,6 +84,12 @@
     <ClCompile Include="test\SampleServiceTest.cpp">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="test\ProductionCalculationTest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\ProductionLineServiceTest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
     <ClCompile Include="src\Model\Sample.cpp">
       <Filter>src\Model</Filter>
     </ClCompile>
